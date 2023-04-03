@@ -2,8 +2,8 @@ from scapy.all import srp
 from scapy.layers.l2 import ARP, Ether
 
 
-def scan_mac_addresses(target_ip: str):
-    arp = ARP(pdst=target_ip)
+def scan_mac_addresses(ip: str):
+    arp = ARP(pdst=ip)
 
     ether = Ether(dst="ff:ff:ff:ff:ff:ff")
 
@@ -17,3 +17,7 @@ def scan_mac_addresses(target_ip: str):
         clients.append({'ip': received.src, 'mac': received.hwsrc})
 
     return clients
+
+
+if __name__ == '__main__':
+    print(scan_mac_addresses("192.168.178.255"))
