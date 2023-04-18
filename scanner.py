@@ -4,11 +4,14 @@ from socket import gethostname, gethostbyname, gethostbyaddr
 
 
 def find_ip_and_mac_addresses():
-    hostname = gethostname()
-    ip_address = gethostbyname(hostname)
-    net_address = '.'.join(ip_address.split('.')[:3]) + '.0'
 
-    target_ip = f"{net_address}/24"
+    ## hostname = gethostname()
+    ## ip_address = gethostbyname(hostname)
+    ## net_address = '.'.join(ip_address.split('.')[:3]) + '.0'
+
+    ## print(net_address)
+
+    target_ip = f"{'192.168.178.0'}/24"
 
     arp = ARP(pdst=target_ip)
     ether = Ether(dst="ff:ff:ff:ff:ff:ff")
